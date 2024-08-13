@@ -1,8 +1,20 @@
 import type { Preview } from '@storybook/react';
-import { themes } from '@storybook/theming';
 
 const preview: Preview = {
   parameters: {
+    backgrounds: {
+      default: 'dark',
+      values: [
+        {
+          name: 'dark',
+          value: '#333333',
+        },
+        {
+          name: 'light',
+          value: '#fff',
+        },
+      ],
+    },
     controls: {
       matchers: {
         color: /(background|color)$/i,
@@ -11,7 +23,7 @@ const preview: Preview = {
     },
   },
 
-  tags: ['autodocs']
+  tags: ['autodocs'],
 };
 
 export default preview;

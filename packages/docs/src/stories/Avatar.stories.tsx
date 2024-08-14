@@ -8,6 +8,15 @@ const meta: Meta<AvatarProps> = {
   component: Avatar,
   args: {
     src: 'https://github.com/JocaBadasss.png',
+    alt: 'Joca Badasss',
+  },
+
+  argTypes: {
+    src: {
+      control: {
+        type: 'text',
+      },
+    },
   },
 };
 

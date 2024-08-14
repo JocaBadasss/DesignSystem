@@ -12,6 +12,15 @@ const meta: Meta<BoxProps> = {
         <Text>Testando o elemento Box</Text>
       </>
     ),
+    
+  },
+
+  argTypes: {
+    children: {
+      control: {
+        type: null,
+      },
+    }, 
   },
 };
 

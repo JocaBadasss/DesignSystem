@@ -24,6 +24,5 @@ jobs:
           projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
           token: ${{ secrets.GITHUB_TOKEN }}
           workingDir: packages/docs
-          exitZeroOnChanges: false
 
   # Add more workflows as needed

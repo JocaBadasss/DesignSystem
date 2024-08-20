@@ -27,28 +27,66 @@
 #         env:
 #           GH_TOKEN: ${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}
 
-name: 'Chromatic'
+# name: 'Chromatic'
 
-on: push
+# on: push
 
+# jobs:
+#   chromatic:
+#     name: Run Chromatic
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Checkout code
+#         uses: actions/checkout@v4
+#         with:
+#           fetch-depth: 0
+#       - uses: actions/setup-node@v4
+#         with:
+#           node-version: 20
+#       - name: Install dependencies
+#         # ⚠️ See your package manager's documentation for the correct command to install dependencies in a CI environment.
+#         run: npm ci
+#       - name: Run Chromatic
+#         uses: chromaui/action@latest
+#         with:
+#           # ⚠️ Make sure to configure a `CHROMATIC_PROJECT_TOKEN` repository secret
+#           projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
+#           workingDir: packages/docs
+
+# .github/workflows/deploy-github-pages.yaml
+ 
+# Workflow name
+name: Build and Publish Storybook to GitHub Pages
+ 
+on:
+  # Event for the workflow to run on
+  push:
+    branches:
+      - 'main' # Replace with the branch you want to deploy from
+ 
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+ 
+# List of jobs
 jobs:
-  chromatic:
-    name: Run Chromatic
+  deploy:
     runs-on: ubuntu-latest
+    # Job steps
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
+      # Manual Checkout
+      - uses: actions/checkout@v4
+ 
+      # Set up Node
       - uses: actions/setup-node@v4
         with:
-          node-version: 20
-      - name: Install dependencies
-        # ⚠️ See your package manager's documentation for the correct command to install dependencies in a CI environment.
-        run: npm ci
-      - name: Run Chromatic
-        uses: chromaui/action@latest
+          node-version: '20'
+ 
+      #👇 Add Storybook build and deploy to GitHub Pages as a step in the workflow
+      - uses: bitovi/github-actions-storybook-to-github-pages@v1.0.3
         with:
-          # ⚠️ Make sure to configure a `CHROMATIC_PROJECT_TOKEN` repository secret
-          projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
-          workingDir: packages/docs
+          install_command: npm ci # default: npm ci
+          build_command: npm run build-storybook # default: npm run build-storybook
+          path: storybook-static # default: dist/storybook
+          checkout: false # default: true

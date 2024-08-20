@@ -88,5 +88,5 @@ jobs:
         with:
           install_command: npm ci # default: npm ci
           build_command: npm run build-storybook # default: npm run build-storybook
-          path: ./packages/docs # default: dist/storybook
+          path: ./packages/docs/storybook-static # default: dist/storybook
           checkout: false # default: true

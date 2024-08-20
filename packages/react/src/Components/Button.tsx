@@ -1,5 +1,5 @@
-import { ComponentProps } from 'react';
-import { styled } from '../styles';
+import { ComponentProps } from 'react'
+import { styled } from '../styles'
 
 export const Button = styled('button', {
   all: 'unset',
@@ -84,8 +84,8 @@ export const Button = styled('button', {
     variant: 'primary',
     size: 'md',
   },
-});
+})
 
 export interface ButtonProps extends ComponentProps<typeof Button> {}
 
-Button.displayName = 'Button';
+Button.displayName = 'Button'

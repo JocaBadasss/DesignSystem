@@ -1,5 +1,3 @@
-
-
 name: Build and Publish Storybook to GitHub Pages
 
 on:
@@ -23,10 +21,10 @@ jobs:
 
       # Instala as dependências
       - run: npm ci
-      
+
       # Builda o projeto principal
       - run: npm run build
-      
+
       # Builda o Storybook no diretório específico
       - run: npm run build-storybook
         working-directory: ./packages/docs
@@ -40,8 +38,3 @@ jobs:
           path: ./packages/docs/storybook-static
           artifact_name: my-storybook-artifact # Novo nome para o artefato
 
-      # Deploy do Storybook para o GitHub Pages
-      - name: Deploy Storybook to GitHub Pages
-        uses: actions/deploy-pages@v4
-        with:
-          artifact_name: my-storybook-artifact # Usando o novo nome do artefato

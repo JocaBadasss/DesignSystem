@@ -20,6 +20,7 @@ jobs:
           node-version: '20'
       - run: npm ci
       - run: npm run build-storybook # Certifique-se de que esse script existe
+      - workspace: ./packages/docs
       - uses: bitovi/github-actions-storybook-to-github-pages@v1.0.3
         with:
           install_command: npm ci

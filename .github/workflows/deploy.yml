@@ -19,6 +19,7 @@ jobs:
         with:
           node-version: '20'
       - run: npm ci
+      - run: npm run build
         # Define o diretório para onde o npm ci será executado
       - run: npm run build-storybook
         working-directory: ./packages/docs # Define o diretório onde o script está localizado

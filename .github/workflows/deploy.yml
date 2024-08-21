@@ -1,3 +1,5 @@
+
+
 name: Build and Publish Storybook to GitHub Pages
 
 on:
@@ -18,13 +20,28 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '20'
+
+      # Instala as dependências
       - run: npm ci
+      
+      # Builda o projeto principal
       - run: npm run build
-        # Define o diretório para onde o npm ci será executado
+      
+      # Builda o Storybook no diretório específico
       - run: npm run build-storybook
-        working-directory: ./packages/docs # Define o diretório onde o script está localizado
-      - uses: bitovi/github-actions-storybook-to-github-pages@v1.0.3
+        working-directory: ./packages/docs
+
+      # Arquiva o build do Storybook com um nome de artefato único usando o Bitovi
+      - name: Upload Storybook to GitHub Pages
+        uses: bitovi/github-actions-storybook-to-github-pages@v1.0.3
         with:
           install_command: npm ci
           build_command: npm run build
-          path: ./packages/docs/storybook-static # Certifique-se de que o caminho seja o correto para onde o Storybook será gerado
+          path: ./packages/docs/storybook-static
+          artifact_name: my-storybook-artifact # Novo nome para o artefato
+
+      # Deploy do Storybook para o GitHub Pages
+      - name: Deploy Storybook to GitHub Pages
+        uses: actions/deploy-pages@v4
+        with:
+          artifact_name: my-storybook-artifact # Usando o novo nome do artefato

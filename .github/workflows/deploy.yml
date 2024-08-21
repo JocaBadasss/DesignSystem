@@ -114,10 +114,6 @@ jobs:
         working-directory: ./packages/docs
         run: npm install
 
-      - name: Build Storybook
-        working-directory: ./packages/docs
-        run: npm run build-storybook
-
       - name: Deploy Storybook to GitHub Pages
         uses: bitovi/github-actions-storybook-to-github-pages@v1.0.3
         with:

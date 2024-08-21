@@ -1,140 +1,21 @@
-name: Deploy docs
+name: Build and Publish Storybook to GitHub Pages
 
 on:
   push:
     branches:
-      - main
+      - 'main'
 
 jobs:
-  build-and-deploy:
-    runs-on: ubuntu-latest
+  deploy:
     steps:
-      - name: Checkout
-        uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
+      - name: Build
+        run: npm run build-storybook
+        working-directory: packages/docs
+
+      - name: Deploy
+        uses: JamesIves/github-pages-deploy-action@v4
         with:
-          node-version: 20
-
-      - run: npm ci
-
-      - run: npm run build
-
-      - name: Deploy storybook
-        working-directory: ./packages/docs
-        run: npm run deploy-storybook -- --ci --existing-output-dir=storybook-static
-        env:
-          GH_TOKEN: ${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}
-
-# name: 'Chromatic'
-
-# on: push
-
-# jobs:
-#   chromatic:
-#     name: Run Chromatic
-#     runs-on: ubuntu-latest
-#     steps:
-#       - name: Checkout code
-#         uses: actions/checkout@v4
-#         with:
-#           fetch-depth: 0
-#       - uses: actions/setup-node@v4
-#         with:
-#           node-version: 20
-#       - name: Install dependencies
-#         # ⚠️ See your package manager's documentation for the correct command to install dependencies in a CI environment.
-#         run: npm ci
-#       - name: Run Chromatic
-#         uses: chromaui/action@latest
-#         with:
-#           # ⚠️ Make sure to configure a `CHROMATIC_PROJECT_TOKEN` repository secret
-#           projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
-#           workingDir: packages/docs
-
-# .github/workflows/deploy-github-pages.yaml
-
-# name: Build and Publish Storybook to GitHub Pages
-
-# on:
-#   # Event for the workflow to run on
-#   push:
-#     branches:
-#       - 'main' # Replace with the branch you want to deploy from
-
-# permissions:
-#   contents: read
-#   pages: write
-#   id-token: write
-
-# # List of jobs
-# jobs:
-#   deploy:
-#     runs-on: ubuntu-latest
-#     # Job steps
-#     steps:
-#       # Manual Checkout
-#       - uses: actions/checkout@v4
-
-#       # Set up Node
-#       - uses: actions/setup-node@v4
-#         with:
-#           node-version: '18'
-
-#       #👇 Add Storybook build and deploy to GitHub Pages as a step in the workflow
-#       - uses: bitovi/github-actions-storybook-to-github-pages@v1.0.3
-#         with:
-#           install_command: npm ci # default: npm ci
-#           build_command: npm run build-storybook # default: npm run build-storybook
-#           path: packages/docs # default: dist/storybook
-#           checkout: false # default: true
-
-# on:
-#   push:
-#     branches:
-#       - 'main' # change to the branch you wish to deploy from
-# permissions:
-#   contents: read
-#   pages: write
-#   id-token: write
-# jobs:
-#   deploy:
-#     environment:
-#       name: github-pages
-#       url: ${{ steps.build-publish.outputs.page_url }}
-#     runs-on: ubuntu-latest
-#     steps:
-#       - id: build-publish
-#         uses: bitovi/github-actions-storybook-to-github-pages@v1.0.3
-#         with:
-#           node-version: '20'
-
-#       #👇 Add Storybook build and deploy to GitHub Pages as a step in the workflow
-#       - uses: bitovi/github-actions-storybook-to-github-pages@v1.0.3
-#         with:
-#           install_command: npm ci # default: npm ci
-#           # build_command: npm run build-storybook # default: npm run build-storybook
-#           path: docs # default: dist/storybook
-#           checkout: false # default: true
-
-# on:
-#   push:
-#     branches:
-#       - 'main' # change to the branch you wish to deploy from
-# permissions:
-#   contents: read
-#   pages: write
-#   id-token: write
-# jobs:
-#   deploy:
-#     environment:
-#       name: github-pages
-#       url: ${{ steps.build-publish.outputs.page_url }}
-#     runs-on: ubuntu-latest
-#     steps:
-#       - id: build-publish
-#         uses: bitovi/github-actions-storybook-to-github-pages@v1.0.3
-#         with:
-#           path: storybook-static
-#           install_command: npm install
+          branch: main
+          folder: packages/docs/storybook-static

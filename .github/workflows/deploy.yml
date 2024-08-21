@@ -91,10 +91,12 @@
 #           path: docs # default: dist/storybook
 #           checkout: false # default: true
 
+
+Copiar código
 on:
   push:
     branches:
-      - 'main' # change to the branch you wish to deploy from
+      - 'main'
 permissions:
   contents: read
   pages: write
@@ -106,8 +108,17 @@ jobs:
       url: ${{ steps.build-publish.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
-      - id: build-publish
+      - uses: actions/checkout@v4
+
+      - name: Install Dependencies
+        working-directory: ./packages/docs
+        run: npm install
+
+      - name: Build Storybook
+        working-directory: ./packages/docs
+        run: npm run build-storybook
+
+      - name: Deploy Storybook to GitHub Pages
         uses: bitovi/github-actions-storybook-to-github-pages@v1.0.3
         with:
-          path: packages/docs
-          install_command: npm install
+          path: ./packages/docs/storybook-static

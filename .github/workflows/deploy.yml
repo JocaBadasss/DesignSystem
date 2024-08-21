@@ -19,9 +19,10 @@ jobs:
         with:
           node-version: '20'
       - run: npm ci
-      - run: npm run build-storybook # Certifique-se de que esse script existe
-      - workspace: ./packages/docs
+        # Define o diretório para onde o npm ci será executado
+      - run: npm run build-storybook
+        working-directory: ./packages/docs # Define o diretório onde o script está localizado
       - uses: bitovi/github-actions-storybook-to-github-pages@v1.0.3
         with:
           install_command: npm ci
-          path: ./packages/docs/storybook-static
+          path: ./packages/docs/storybook-static # Certifique-se de que o caminho seja o correto para onde o Storybook será gerado

@@ -30,9 +30,7 @@ jobs:
 
 
 
-      # Builda o Storybook no diretório específico
-      - run: npm run build-storybook
-        working-directory: ./packages/docs
+
 
       # Arquiva o build do Storybook com um nome de artefato único usando o Bitovi
       - name: Upload Storybook to GitHub Pages
@@ -41,5 +39,5 @@ jobs:
           install_command: npm ci
           build_command: npm run build
           path: ./packages/docs/storybook-static
-          artifact_name: my-storybook-artifact # Novo nome para o artefato
+
 

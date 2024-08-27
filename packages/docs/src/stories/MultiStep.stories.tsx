@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from '@storybook/react';
 
-import { Box, MultiStep, MultiStepProps } from '@ignite-ui/react';
+import { Box, MultiStep, MultiStepProps } from '@joca-ui/react';
 
 const meta: Meta<MultiStepProps> = {
   title: 'Form/Multi Step',
@@ -27,8 +27,8 @@ type Story = StoryObj<MultiStepProps>;
 export const Primary: Story = {
   args: {},
 };
-export const Full : Story = {
-    args: {
-        currentStep: 4
-    }
+export const Full: Story = {
+  args: {
+    currentStep: 4,
+  },
 };

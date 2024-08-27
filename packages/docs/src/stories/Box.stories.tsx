@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from '@storybook/react';
 
-import { Box, BoxProps, Text } from '@ignite-ui/react';
+import { Box, BoxProps, Text } from '@joca-ui/react';
 
 const meta: Meta<BoxProps> = {
   title: 'Surfaces/Box',
@@ -12,7 +12,6 @@ const meta: Meta<BoxProps> = {
         <Text>Testando o elemento Box</Text>
       </>
     ),
-    
   },
 
   argTypes: {
@@ -20,7 +19,7 @@ const meta: Meta<BoxProps> = {
       control: {
         type: null,
       },
-    }, 
+    },
   },
 };
 

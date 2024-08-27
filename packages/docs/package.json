@@ -1,7 +1,7 @@
 {
-  "name": "docs",
+  "name": "@joca-ui/docs",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
   "type": "module",
   "scripts": {
     "dev": "storybook dev -p 6006",
@@ -10,13 +10,12 @@
     "preview": "vite preview",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "deploy-storybook": "storybook-to-ghpages",
     "chromatic": "chromatic --exit-zero-on-changes"
   },
   "dependencies": {
-    "@ignite-ui/eslint-config": "*",
-    "@ignite-ui/react": "*",
-    "@ignite-ui/tokens": "*",
+    "@joca-ui/eslint-config": "*",
+    "@joca-ui/react": "*",
+    "@joca-ui/tokens": "*",
     "@storybook/addon-a11y": "^8.2.9",
     "phosphor-react": "^1.4.1",
     "polished": "^4.2.2",
@@ -35,7 +34,6 @@
     "@storybook/manager-api": "^8.2.6",
     "@storybook/react": "^8.2.6",
     "@storybook/react-vite": "^8.2.6",
-    "@storybook/storybook-deployer": "^2.8.16",
     "@storybook/test": "^8.2.6",
     "@storybook/theming": "^8.2.6",
     "@types/react": "^18.3.3",

@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from '@storybook/react';
 
-import { Button, ButtonProps } from '@ignite-ui/react';
+import { Button, ButtonProps } from '@joca-ui/react';
 import { ArrowRight } from 'phosphor-react';
 
 const meta: Meta<ButtonProps> = {
@@ -61,7 +61,7 @@ export const WithIcon: Story = {
     children: (
       <>
         Próximo passo
-        <ArrowRight weight="bold" />
+        <ArrowRight weight='bold' />
       </>
     ),
   },

@@ -15,7 +15,7 @@
     "strict": true,
     "baseUrl": ".",
     "paths": {
-      "@ignite-ui/tokens": ["../tokens/src/index.ts"]
+      "@joca-ui/tokens": ["../tokens/src/index.ts"]
     }
   },
   "exclude": ["node_modules"]

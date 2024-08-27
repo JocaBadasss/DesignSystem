@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from '@storybook/react';
 
-import { Box, Text, Checkbox, CheckboxProps } from '@ignite-ui/react';
+import { Box, Text, Checkbox, CheckboxProps } from '@joca-ui/react';
 
 const meta: Meta<CheckboxProps> = {
   title: 'Form/Checkbox',

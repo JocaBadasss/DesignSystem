@@ -24,6 +24,11 @@ jobs:
 
       # Builda o projeto principal
       - run: npm run build
+        env: 
+          TURBO_TOKEN: 71jgdGL0mIlWsM53GKAAByOM
+          TURBO_TEAM: jocabadasss-projects
+
+
 
       # Builda o Storybook no diretório específico
       - run: npm run build-storybook

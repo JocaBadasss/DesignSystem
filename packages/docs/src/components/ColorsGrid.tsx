@@ -1,4 +1,4 @@
-import { colors } from '@ignite-ui/tokens';
+import { colors } from '@joca-ui/tokens';
 import { ColorPalette, ColorItem } from '@storybook/blocks';
 
 export function ColorsGrid() {
@@ -12,23 +12,6 @@ export function ColorsGrid() {
           subtitle=''
         />
       </ColorPalette>
-
-      // <div
-      //   key={key}
-      //   style={{ backgroundColor: color, padding: '2rem' }}
-      // >
-      //   <div
-      //     style={{
-      //       display: 'flex',
-      //       justifyContent: 'space-between',
-      //       fontFamily: 'monospace',
-      //       color: '#FFF',
-      //     }}
-      //   >
-      //     <strong>${key}</strong>
-      //     <span>{color}</span>
-      //   </div>
-      // </div>
     );
   });
 }

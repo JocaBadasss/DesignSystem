@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from '@storybook/react';
 
-import { Box, Text, TextInput, TextInputProps } from '@ignite-ui/react';
+import { Box, Text, TextInput, TextInputProps } from '@joca-ui/react';
 
 const meta: Meta<TextInputProps> = {
   title: 'Form/Text Input',

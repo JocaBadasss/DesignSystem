@@ -15,4 +15,6 @@ export const colors = {
   joca500: '#00875F',
   joca700: '#015F43',
   joca900: '#00291D',
+
+  transparent: 'transparent',
 };

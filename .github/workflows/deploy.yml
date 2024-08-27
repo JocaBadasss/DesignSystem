@@ -19,20 +19,16 @@ jobs:
         with:
           node-version: '20'
           cache: 'npm'
-          cache-dependency-path: '**/package-lock.json' 
+          cache-dependency-path: '**/package-lock.json'
 
       # Instala as dependências
       - run: npm ci
 
       # Builda o projeto principal
       - run: npm run build
-        env: 
+        env:
           TURBO_TOKEN: 71jgdGL0mIlWsM53GKAAByOM
           TURBO_TEAM: jocabadasss-projects
-
-
-
-
 
       # Arquiva o build do Storybook com um nome de artefato único usando o Bitovi
       - name: Upload Storybook to GitHub Pages
@@ -41,5 +37,4 @@ jobs:
           install_command: npm ci
           build_command: npm run build
           path: ./packages/docs/storybook-static
-
-
+          checkout: false
